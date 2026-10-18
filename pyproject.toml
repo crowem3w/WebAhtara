@@ -1,0 +1,12 @@
+[project]
+name = "ahtara-backend"
+version = "0.1.0"
+requires-python = ">=3.11"
+
+# Tells Vercel where the FastAPI instance named `app` lives.
+[tool.vercel]
+entrypoint = "api.main:app"
+
+# Collects the Django admin's CSS/JS into staticfiles/ so WhiteNoise can serve it.
+[tool.vercel.scripts]
+build = "python manage.py collectstatic --noinput"
