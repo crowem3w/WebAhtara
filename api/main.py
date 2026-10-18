@@ -23,4 +23,9 @@ app.add_middleware(
     CORSMiddleware, allow_origins=settings.CORS_ORIGINS, allow_methods=["GET", "POST"], allow_headers=["Content-Type"]
 )
 app.include_router(router, prefix="/v1")
+@app.get("/", include_in_schema=False)
+async def root():
+    return {"name": "Ahtara listings API", "docs": "/docs", "listings": "/v1/listings", "admin": "/admin/"}
+
+
 app.mount("/", django_app)  # keep last
